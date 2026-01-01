@@ -5,19 +5,19 @@
     "description": "Enterprise-grade Bangla Quotes Web Platform",
     "workspaces": [
         "backend",
-        "frontend/*",
-        "packages/*"
+        "frontend/web"
     ],
     "scripts": {
-        "dev": "turbo run dev",
-        "build": "turbo run build",
-        "lint": "turbo run lint",
+        "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+        "dev:backend": "npm run dev --workspace=@bangla-quotes/api",
+        "dev:frontend": "npm run dev --workspace=@bangla-quotes/web",
+        "build": "npm run build --workspaces",
+        "lint": "npm run lint --workspaces",
         "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
-        "clean": "turbo run clean && rm -rf node_modules",
-        "type-check": "turbo run type-check"
+        "clean": "rm -rf node_modules && npm run clean --workspaces"
     },
     "devDependencies": {
-        "turbo": "^1.11.2",
+        "concurrently": "^8.2.2",
         "prettier": "^3.1.1",
         "eslint": "^8.56.0",
         "typescript": "^5.3.3"
