@@ -72,7 +72,7 @@ router.post(
 router.post(
     '/change-password',
     authenticate,
-    validateBody(changePasswordSchema),
+    validateBody(changePasswordSchema as any),
     authController.changePassword
 );
 
