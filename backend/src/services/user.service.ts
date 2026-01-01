@@ -44,7 +44,7 @@ export class UserService {
                     role: true,
                     isActive: true,
                     createdAt: true,
-                    lastLoginAt: true, // Assuming you might add this later, or use updatedAt/activity logs
+
                     _count: {
                         select: {
                             favorites: true,
